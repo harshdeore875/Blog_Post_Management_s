@@ -1,0 +1,443 @@
+{
+  "info": {
+    "name": "Blog Post Management API",
+    "description": "Postman collection for testing the Blog Post Management backend APIs.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000/api",
+      "type": "string"
+    },
+    {
+      "key": "blogId",
+      "value": "replace_with_blog_id",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Create Blog",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Getting Started with React Hooks\",\n  \"description\": \"A beginner friendly guide to understanding React Hooks.\",\n  \"content\": \"React Hooks allow developers to use state and lifecycle features inside functional components. This article explains useState, useEffect, and common patterns used in modern React applications.\",\n  \"author\": \"Sarah Johnson\",\n  \"category\": \"Technology\",\n  \"tags\": [\"react\", \"hooks\", \"frontend\"],\n  \"image\": \"https://example.com/react-hooks.jpg\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/blogs",
+          "host": ["{{baseUrl}}"],
+          "path": ["blogs"]
+        },
+        "description": "Creates a new blog post."
+      },
+      "response": [
+        {
+          "name": "201 Created",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Getting Started with React Hooks\",\n  \"description\": \"A beginner friendly guide to understanding React Hooks.\",\n  \"content\": \"React Hooks allow developers to use state and lifecycle features inside functional components. This article explains useState, useEffect, and common patterns used in modern React applications.\",\n  \"author\": \"Sarah Johnson\",\n  \"category\": \"Technology\",\n  \"tags\": [\"react\", \"hooks\", \"frontend\"],\n  \"image\": \"https://example.com/react-hooks.jpg\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/blogs",
+              "host": ["{{baseUrl}}"],
+              "path": ["blogs"]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"message\": \"Blog created successfully\",\n  \"data\": {\n    \"_id\": \"665000000000000000000001\",\n    \"title\": \"Getting Started with React Hooks\",\n    \"description\": \"A beginner friendly guide to understanding React Hooks.\",\n    \"content\": \"React Hooks allow developers to use state and lifecycle features inside functional components. This article explains useState, useEffect, and common patterns used in modern React applications.\",\n    \"author\": \"Sarah Johnson\",\n    \"category\": \"Technology\",\n    \"tags\": [\"react\", \"hooks\", \"frontend\"],\n    \"image\": \"https://example.com/react-hooks.jpg\",\n    \"createdAt\": \"2026-05-27T10:00:00.000Z\",\n    \"updatedAt\": \"2026-05-27T10:00:00.000Z\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get All Blogs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/blogs?page=1&limit=10&sort=latest&category=Technology",
+          "host": ["{{baseUrl}}"],
+          "path": ["blogs"],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            },
+            {
+              "key": "sort",
+              "value": "latest",
+              "description": "Use latest or oldest"
+            },
+            {
+              "key": "category",
+              "value": "Technology",
+              "description": "Optional category filter"
+            }
+          ]
+        },
+        "description": "Gets all blogs with pagination, sorting, and optional category filtering."
+      },
+      "response": [
+        {
+          "name": "200 OK",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/blogs?page=1&limit=10&sort=latest&category=Technology",
+              "host": ["{{baseUrl}}"],
+              "path": ["blogs"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "sort",
+                  "value": "latest"
+                },
+                {
+                  "key": "category",
+                  "value": "Technology"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"message\": \"Blogs fetched successfully\",\n  \"data\": {\n    \"blogs\": [],\n    \"pagination\": {\n      \"totalBlogs\": 0,\n      \"totalPages\": 0,\n      \"currentPage\": 1,\n      \"limit\": 10,\n      \"hasNextPage\": false,\n      \"hasPreviousPage\": false\n    },\n    \"sorting\": {\n      \"sort\": \"latest\"\n    },\n    \"filtering\": {\n      \"category\": \"Technology\"\n    }\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get Single Blog",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/blogs/{{blogId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["blogs", "{{blogId}}"]
+        },
+        "description": "Gets one blog by MongoDB document ID."
+      },
+      "response": [
+        {
+          "name": "200 OK",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/blogs/{{blogId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["blogs", "{{blogId}}"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"message\": \"Blog fetched successfully\",\n  \"data\": {\n    \"_id\": \"665000000000000000000001\",\n    \"title\": \"Getting Started with React Hooks\",\n    \"description\": \"A beginner friendly guide to understanding React Hooks.\",\n    \"content\": \"React Hooks allow developers to use state and lifecycle features inside functional components. This article explains useState, useEffect, and common patterns used in modern React applications.\",\n    \"author\": \"Sarah Johnson\",\n    \"category\": \"Technology\",\n    \"tags\": [\"react\", \"hooks\", \"frontend\"],\n    \"image\": \"https://example.com/react-hooks.jpg\",\n    \"createdAt\": \"2026-05-27T10:00:00.000Z\",\n    \"updatedAt\": \"2026-05-27T10:00:00.000Z\"\n  }\n}"
+        },
+        {
+          "name": "404 Not Found",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/blogs/{{blogId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["blogs", "{{blogId}}"]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": false,\n  \"message\": \"Blog not found\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Update Blog",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Getting Started with React Hooks Updated\",\n  \"description\": \"An updated beginner friendly guide to React Hooks.\",\n  \"content\": \"React Hooks allow developers to use state and lifecycle features inside functional components. This updated post explains useState, useEffect, custom hooks, and common patterns used in modern React applications.\",\n  \"author\": \"Sarah Johnson\",\n  \"category\": \"Technology\",\n  \"tags\": [\"react\", \"hooks\", \"updated\"],\n  \"image\": \"https://example.com/react-hooks-updated.jpg\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/blogs/{{blogId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["blogs", "{{blogId}}"]
+        },
+        "description": "Updates a blog by ID."
+      },
+      "response": [
+        {
+          "name": "200 OK",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Getting Started with React Hooks Updated\",\n  \"description\": \"An updated beginner friendly guide to React Hooks.\",\n  \"content\": \"React Hooks allow developers to use state and lifecycle features inside functional components. This updated post explains useState, useEffect, custom hooks, and common patterns used in modern React applications.\",\n  \"author\": \"Sarah Johnson\",\n  \"category\": \"Technology\",\n  \"tags\": [\"react\", \"hooks\", \"updated\"],\n  \"image\": \"https://example.com/react-hooks-updated.jpg\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/blogs/{{blogId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["blogs", "{{blogId}}"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"message\": \"Blog updated successfully\",\n  \"data\": {\n    \"_id\": \"665000000000000000000001\",\n    \"title\": \"Getting Started with React Hooks Updated\",\n    \"description\": \"An updated beginner friendly guide to React Hooks.\",\n    \"content\": \"React Hooks allow developers to use state and lifecycle features inside functional components. This updated post explains useState, useEffect, custom hooks, and common patterns used in modern React applications.\",\n    \"author\": \"Sarah Johnson\",\n    \"category\": \"Technology\",\n    \"tags\": [\"react\", \"hooks\", \"updated\"],\n    \"image\": \"https://example.com/react-hooks-updated.jpg\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Delete Blog",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/blogs/{{blogId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["blogs", "{{blogId}}"]
+        },
+        "description": "Deletes a blog by ID."
+      },
+      "response": [
+        {
+          "name": "200 OK",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/blogs/{{blogId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["blogs", "{{blogId}}"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"message\": \"Blog deleted successfully\",\n  \"data\": null\n}"
+        }
+      ]
+    },
+    {
+      "name": "Search Blog",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/blogs/search?query=react&page=1&limit=10",
+          "host": ["{{baseUrl}}"],
+          "path": ["blogs", "search"],
+          "query": [
+            {
+              "key": "query",
+              "value": "react"
+            },
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        },
+        "description": "Searches blogs by title, author, or category using MongoDB regex."
+      },
+      "response": [
+        {
+          "name": "200 OK",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/blogs/search?query=react&page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["blogs", "search"],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "react"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"message\": \"Search results fetched successfully\",\n  \"data\": {\n    \"blogs\": [],\n    \"search\": {\n      \"query\": \"react\",\n      \"fields\": [\"title\", \"author\", \"category\"]\n    },\n    \"pagination\": {\n      \"totalBlogs\": 0,\n      \"totalPages\": 0,\n      \"currentPage\": 1,\n      \"limit\": 10,\n      \"hasNextPage\": false,\n      \"hasPreviousPage\": false\n    }\n  }\n}"
+        },
+        {
+          "name": "400 Missing Query",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/blogs/search",
+              "host": ["{{baseUrl}}"],
+              "path": ["blogs", "search"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": false,\n  \"message\": \"Search query is required\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Export CSV",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/blogs/export?category=Technology",
+          "host": ["{{baseUrl}}"],
+          "path": ["blogs", "export"],
+          "query": [
+            {
+              "key": "category",
+              "value": "Technology",
+              "description": "Optional category filter"
+            }
+          ]
+        },
+        "description": "Downloads all blogs or filtered blogs as a CSV file."
+      },
+      "response": [
+        {
+          "name": "200 CSV Download",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/blogs/export?category=Technology",
+              "host": ["{{baseUrl}}"],
+              "path": ["blogs", "export"],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "Technology"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/csv"
+            },
+            {
+              "key": "Content-Disposition",
+              "value": "attachment; filename=\"blogs.csv\""
+            }
+          ],
+          "body": "\"Title\",\"Description\",\"Author\",\"Category\",\"Created Date\"\n\"Getting Started with React Hooks\",\"A beginner friendly guide to understanding React Hooks.\",\"Sarah Johnson\",\"Technology\",\"5/27/2026\""
+        }
+      ]
+    }
+  ]
+}
