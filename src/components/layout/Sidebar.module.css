@@ -1,0 +1,14 @@
+.navList {
+  padding: 16px;
+}
+
+.navLink,
+.activeLink {
+  margin-bottom: 8px;
+  border-radius: 8px;
+}
+
+.activeLink {
+  background: #eef6ff;
+  color: #2557a7;
+}

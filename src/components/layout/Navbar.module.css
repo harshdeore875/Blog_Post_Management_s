@@ -1,0 +1,71 @@
+.navbar {
+  border-bottom: 1px solid #e5e9f0;
+  z-index: 1300;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.leftCluster {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoMark {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border-radius: 8px;
+  background: #2557a7;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.logoText {
+  white-space: nowrap;
+}
+
+.menu {
+  flex: 1;
+  justify-content: center;
+}
+
+.menuLink,
+.activeMenuLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: #536173;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.activeMenuLink {
+  color: #5838f5;
+  background: #f0edff;
+}
+
+.roleChip {
+  text-transform: capitalize;
+}
+
+@media (max-width: 760px) {
+  .toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 12px 16px;
+  }
+
+  .menu {
+    justify-content: flex-start;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}

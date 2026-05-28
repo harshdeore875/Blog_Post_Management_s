@@ -1,0 +1,62 @@
+.formPage {
+  width: min(720px, 100%);
+  margin: 0 auto;
+}
+
+.formIntro {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  padding: 28px 20px;
+  border-color: #e7edf3;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.iconWrap {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border-radius: 999px;
+  background: #7c3aed;
+  color: #ffffff;
+}
+
+.formCard {
+  padding: 22px 24px;
+  border-color: #e7edf3;
+  border-radius: 8px;
+}
+
+.sectionTitle {
+  margin-bottom: 8px;
+}
+
+.twoColumn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.divider {
+  margin: 18px 0 14px;
+}
+
+.actions {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #edf1f5;
+}
+
+@media (max-width: 640px) {
+  .formCard {
+    padding: 18px;
+  }
+
+  .twoColumn {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}

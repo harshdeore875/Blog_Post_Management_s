@@ -1,0 +1,25 @@
+.tableWrap {
+  border-color: #e7edf3;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.idCell {
+  color: #6f7c8f;
+}
+
+.published {
+  background: #dff9e8;
+  color: #1f9d55;
+  font-weight: 700;
+}
+
+.draft {
+  background: #fff0d9;
+  color: #d07a22;
+  font-weight: 700;
+}
+
+.menuIcon {
+  margin-right: 8px;
+}
