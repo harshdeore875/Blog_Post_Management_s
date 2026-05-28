@@ -21,6 +21,7 @@ const getAuthorFilter = (req) => ({
 
 export const createAuthorBlog = async (req, res) => {
   try {
+    
     const blog = await Blog.create({
       ...req.body,
       author: req.user.username,
