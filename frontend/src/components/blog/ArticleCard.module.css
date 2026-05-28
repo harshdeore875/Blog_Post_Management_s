@@ -1,0 +1,92 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #eceff3;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+  transform: translateY(-2px);
+}
+
+.imageLink {
+  display: block;
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 18px 20px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.category {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.date {
+  color: #9ca3af;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.titleLink {
+  color: inherit;
+}
+
+.title {
+  margin: 0;
+  color: #111827;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.author {
+  margin: auto 0 0;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.draftBadge {
+  align-self: flex-start;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #fff0d9;
+  color: #d07a22;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.menuButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.92) !important;
+}
